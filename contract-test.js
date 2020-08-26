@@ -28,12 +28,13 @@ glob("./queries/**/*.graphql", (err, files) => {
         files[fileIndex]
       );
 
-      const { errors } = stubClient({
+      const { data, errors } = stubClient({
         operation: operationString,
         variables: variables[operationName],
       });
 
       if (!errors) {
+        console.log(data);
         return console.log(`✔ ${operationName} matches`);
       }
 

@@ -6,15 +6,15 @@ const {
 } = require("graphql");
 const { addMocksToSchema } = require("@graphql-tools/mock");
 
-module.exports.createStubClient = (introspectionQuery) => {
-  const schema = graphqlSync(
-    buildSchema(introspectionQuery),
+module.exports.createStubClient = (graphqlFile) => {
+  const introspection = graphqlSync(
+    buildSchema(graphqlFile),
     getIntrospectionQuery()
   );
 
-  const clientSchema = buildClientSchema(schema.data);
-
-  const mockedSchema = addMocksToSchema({ schema: clientSchema });
+  const mockedSchema = addMocksToSchema({
+    schema: buildClientSchema(introspection.data),
+  });
 
   return ({ operation, variables }) =>
     graphqlSync({
