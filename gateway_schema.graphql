@@ -1,0 +1,31 @@
+type UserProfile {
+  name: String!
+  email: String!
+}
+
+type Viewer {
+  id: ID!
+  me: UserProfile
+}
+
+type Query {
+  viewer: Viewer
+}
+
+input AddUserInput {
+  name: String!
+  email: String!
+}
+
+type Error {
+  verbose: String!
+}
+
+type AddUserPayload {
+  success: Boolean!
+  errors: [Error]
+}
+
+type Mutation {
+  addUser(input: AddUserInput!): AddUserPayload!
+}

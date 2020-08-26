@@ -1,0 +1,8 @@
+mutation AddUser($input: AddUserInput!) {
+  addUser(input: $input) {
+    success
+    errors {
+      verbose
+    }
+  }
+}

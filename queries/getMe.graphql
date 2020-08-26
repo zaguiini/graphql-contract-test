@@ -1,0 +1,9 @@
+query GetMe {
+  viewer {
+    id
+    me {
+      name
+      email
+    }
+  }
+}

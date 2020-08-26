@@ -1,0 +1,8 @@
+query {
+  viewer {
+    id
+    me {
+      address
+    }
+  }
+}

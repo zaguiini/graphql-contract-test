@@ -1,0 +1,13 @@
+{
+  "name": "graphql-contract",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Luis Felipe Zaguini",
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-tools/mock": "^6.1.0",
+    "glob": "^7.1.6",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0"
+  }
+}
