@@ -2,18 +2,15 @@ const { readFileSync } = require("fs");
 const glob = require("glob");
 const gql = require("graphql-tag");
 const get = require("lodash.get");
+
 const { createStubClient } = require("./create-stub-client");
+
+const variables = require("./test-variables.json");
 
 // GraphQL file dumped from Gateway
 const introspectionQuery = readFileSync("./gateway_schema.graphql").toString();
 
 const stubClient = createStubClient(introspectionQuery);
-
-const variables = {
-  AddUser: {
-    input: {},
-  },
-};
 
 glob("./queries/**/*.graphql", (err, files) => {
   if (err) {
