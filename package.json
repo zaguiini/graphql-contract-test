@@ -12,7 +12,7 @@
     "lodash.get": "^4.4.2"
   },
   "scripts": {
-    "test": "jest"
+    "test:contract": "jest"
   },
   "devDependencies": {
     "jest": "^26.4.2"
