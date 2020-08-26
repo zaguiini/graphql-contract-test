@@ -1,10 +1,16 @@
 module.exports = {
   testEnvironment: "node",
-  collectCoverage: true,
-  collectCoverageFrom: ["queries/*.graphql"],
-  setupFilesAfterEnv: ["./setup-matchers"],
-  coverageReporters: ["text"],
+  setupFilesAfterEnv: ["./setup-matchers.js"],
+  moduleFileExtensions: ["js", "graphql"],
   transform: {
-    "^.+\\.graphql$": "./parse-graphql-file",
+    "^.+\\.graphql$": "./parse-graphql-file.js",
+  },
+  collectCoverage: true,
+  collectCoverageFrom: ["./queries/**/*.graphql"],
+  coverageReporters: ["text"],
+  coverageThreshold: {
+    global: {
+      statements: 100,
+    },
   },
 };
