@@ -34,7 +34,7 @@ glob("./queries/**/*.graphql", (err, files) => {
       });
 
       if (!errors) {
-        return console.log(`✔ ${operationName} matches`);
+        return console.log(`✔ ${operationName} matches the contract`);
       }
 
       console.log(`✘ ${operationName}`);
