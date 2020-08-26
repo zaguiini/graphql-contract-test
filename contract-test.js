@@ -1,7 +1,7 @@
 const { readFileSync } = require("fs");
 const glob = require("glob");
 const gql = require("graphql-tag");
-const { basename } = require("path");
+const get = require("lodash.get");
 const { createStubClient } = require("./create-stub-client");
 
 // GraphQL file dumped from Gateway
@@ -25,10 +25,11 @@ glob("./queries/**/*.graphql", (err, files) => {
     .forEach((operationString, fileIndex) => {
       const operationAST = gql(operationString);
 
-      const operationName =
-        operationAST.definitions[0] && operationAST.definitions[0].name
-          ? operationAST.definitions[0].name.value
-          : files[fileIndex];
+      const operationName = get(
+        operationAST,
+        "definitions.0.name.value",
+        files[fileIndex]
+      );
 
       const { errors } = stubClient({
         operation: operationString,
